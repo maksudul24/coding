@@ -1,13 +1,4 @@
 #include<bits/stdc++.h>
-#define open_file freopen("input.txt","r",stdin)
-#define output_file freopen("output.txt","w",stdout)
-#define YES cout<<"YES\n"
-#define NO cout<<"NO\n"
-#define dbug cout<<"Line: ",__LINE__<<"\n";
-#define INF 2147483647
-#define M_INF -2147483648
-#define SIZE 200010
-#define MOD 1000000009
 using namespace std;
 
 
@@ -17,12 +8,17 @@ int main()
     cin.tie(NULL);
     //use "\n" for next line
 
-    int t,n,x,y,m;
+    int t,n;
 
-    //open_file;
+  //  open_file;
     cin>>t;
     while(t--){
-
+        cin>>n;
+        if(n % 3 != 0){
+            cout<<"First\n";
+        }
+        else cout<<"Second\n";
     }
     return 0;
 }
+
