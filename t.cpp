@@ -20,36 +20,19 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,a,b,cnt,prev;
-    bool sw,sw2,sw3;
-    string s;
+    int a,b,c,ans;
     open_file;
     cin>>testCase;
-    cin.ignore();
     while(testCase--){
-        sw = true;
-        sw2 = true;
-        sw3 = false;
-        cnt = 0;
-        cin>>s;
-        n = s.size();
-        prev = '5';
-        for(int i = 0; i < n; i++){
-            if(sw && s[i] == '0'){
-                if(sw2){
-                    cnt++;
-                    sw2 = false;
-                }
-                else if(sw3){
-                    cnt++;
-                    sw = false;
-                }
-            }
-            else if(sw && s[i] == '1' && sw2 == false) sw3 = true;
-            else if(s[i] != prev) cnt++;
-            prev = s[i];
+        cin>>a>>b>>c;
+        if(a == b && b == c && b % 2 != 0) cout<<"-1\n";
+        else{
+            ans = c - b;
+            if(ans < a) ans += b;
+            else ans = b + a;
+            cout<<ans<<"\n";
+
         }
-        cout<<cnt<<"\n";
     }
     return 0;
 }
