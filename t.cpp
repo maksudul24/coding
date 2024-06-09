@@ -20,19 +20,14 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int a,b,c,ans;
+    int n,x,y,m,a,ans,b,cnt,num,sum,temp;
+    bool sw;
     open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>a>>b>>c;
-        if(a == b && b == c && b % 2 != 0) cout<<"-1\n";
-        else{
-            ans = c - b;
-            if(ans < a) ans += b;
-            else ans = b + a;
-            cout<<ans<<"\n";
-
-        }
+        cin>>a>>b;
+        ans = log2(b);
+        cout<<ans<<"\n";
     }
     return 0;
 }

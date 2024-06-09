@@ -13,6 +13,22 @@
 using namespace std;
 
 
+int binary_search(int ara[],int b,int e,int x)
+{
+    int mid;
+    while(b <= e){
+        mid = (b + e) / 2;
+        if(ara[mid] == x) return mid;
+        else if(ara[mid] > x){
+            e = mid - 1;
+        }
+        else{
+            b = mid + 1;
+        }
+    }
+    return -1;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -20,14 +36,13 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,a,ans,b,cnt,num,sum,temp;
+    int n,x,y,m,a,b,cnt,num,sum,temp;
     bool sw;
-   //open_file;
+    open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>a>>b;
-        ans = log2(b);
-        cout<<ans<<"\n";
+        cin>>n;
     }
     return 0;
 }
+
