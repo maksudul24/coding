@@ -8,41 +8,48 @@
 #define M_INF -2147483648
 #define SIZE 105
 #define MOD 1000000009
+#define ll long long
 //PRINT_VARIABLE_NAME //use cout<<"\n";
 #define PVN(variable) std::cout << #variable << " = " << variable <<"\n"
 using namespace std;
 
+int n;
+
+bool bi_search(int ara[],ll int num)
+{
+    int mid,e,b;
+
+    b = 0;
+    e = n - 1;
+
+    while(e >= b){
+        mid = (b + e) / 2;
+        if(ara[mid] == num){
+            return true;
+        }
+        else if(n > ara[mid]){
+            e = mid - 1;
+        }
+        else{
+            b = mid + 1;
+        }
+    }
+    return false;
+}
+
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    //use "\n" for next line
+    
+    int x;
+    int ara[] = {16,8,4,2,1};
 
-    int testCase;
-    int n,x,y,m,a,b,cnt,num,sum,temp;
-    int ara[SIZE];
-    open_file;
-    cin>>testCase;
-    while(testCase--){
-        cnt = 0;
-        cin>>n;
-        for(int i = 0; i < n; i++){
-            cin>>ara[i];
-        }
-        sort(ara,ara+n);
-        temp = ara[0];
-        x = 1;
-        for(int i = 1; i < n;i++){
-            if(ara[i] == temp) x++;
-            else{
-                cnt += x / 3;
-                x = 1;
-                temp = ara[i];
-            }
-        }
-        cnt += x / 3;
-        cout<<cnt<<"\n";
+    n = 5;
+    while(1){
+        cin>>x;
+        if(!x) break;
+        if(bi_search(ara,x)) YES;
+        else NO;
     }
     return 0;
 }

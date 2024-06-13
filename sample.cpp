@@ -20,14 +20,27 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,a,ans,b,cnt,num,sum,temp;
-    bool sw;
+    long long int n,x,y,m,a,ans,b,cnt,num,sum,temp;
+    bool sw,sw2;
    //open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>a>>b;
-        ans = log2(b);
-        cout<<ans<<"\n";
+        cin>>n;
+        sw2 = false;
+        sw = true;
+        a = n / 2;
+        if(n % 2 != 0) b = a + 1;
+        else b = a;
+        if(a % 10 + b % 10 == 9) sw = false;
+        while(a && sw){
+            if(sw2 && a % 10 <= 5) sw = false;
+            else if(a % 10 < 5) sw2 = true;
+            else sw2 = false;
+            a /= 10;
+        }
+        if(sw2) NO;
+        else if(sw) YES;
+        else NO;
     }
     return 0;
 }
