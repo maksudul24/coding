@@ -1,0 +1,5 @@
+f = open("in.txt")
+x = f.read()
+print("input:")
+print(x)
+print("outut:")
