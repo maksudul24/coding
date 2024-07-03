@@ -1,4 +1,6 @@
 import pyperclip as cp
 
 f = open('currentprogrammename.txt','w')
-f.write(cp.paste())
+x = cp.paste()
+f.write(x)
+print(x)
