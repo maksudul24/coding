@@ -54,5 +54,4 @@ set expandtab
 set number relativenumber
 set nu rnu
 set belloff=all
-set clipboard=unnamed
 autocmd VimLeave * let &t_EI="\e[2 q" | normal i
