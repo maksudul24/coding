@@ -5,6 +5,8 @@ python,vim editor and g++ compiler enabled windows command line.
 install them, then set the file path from environment variables in windows or
 search it on internet.]
 
+*Copy all the files into the code folder to run there
+
 Operations:
 type this on windows command line and press enter:
 
