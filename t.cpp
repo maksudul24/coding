@@ -21,21 +21,18 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,temp,k;
+    int n,x,y,m,k;
     ll int ans;
     open_file;
     cin>>testCase;
     while(testCase--){
         cin>>n>>m>>k;
-        temp = n / k;
-        if(temp == 0) ans = n;
-        else ans = temp * k;
+        if(n < k) ans = n;
+        else ans = k;
 
-        temp = m / k;
-        if(temp == 0) ans *= m;
-        else ans *= (temp * k);
+        if(m < k) ans *= m;
+        else ans *= k;
 
-        if(k == 1) ans = 1;
         cout<<ans<<"\n";
     }
     return 0;
