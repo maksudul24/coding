@@ -6,8 +6,9 @@
 #define dbug cout<<"Line: ",__LINE__<<"\n";
 #define INF 2147483647
 #define M_INF -2147483648
-#define SIZE 100
+#define SIZE 200010
 #define MOD 1000000009
+#define ll long long
 //PRINT_VARIABLE_NAME //use cout<<"\n";
 #define PVN(variable) std::cout << #variable << " = " << variable <<"\n"
 using namespace std;
