@@ -21,7 +21,7 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int x,y,a,b;
+    ll int x,a,b;
     int ans[SIZE];
     bool sw,prt;
     ll int sum,k,n,m,len;
@@ -44,8 +44,12 @@ int main()
             if(sw){
                 b = n; 
                 if(k % 4 == 0){
-                    if(prt){
-                        a = 2;
+                    if(k == 4){
+                        a = 4;
+                        if(prt){
+                            ans[n - 1] = n;
+                            b--;
+                        }
                     }
                     else a = 4;
                 }
