@@ -6,7 +6,7 @@
 #define dbug cout<<"Line: ",__LINE__<<"\n";
 #define INF 2147483647
 #define M_INF -2147483648
-#define SIZE 100
+#define SIZE 300010
 #define MOD 1000000009
 #define ll long long
 //PRINT_VARIABLE_NAME //use cout<<"\n";
@@ -21,19 +21,24 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,k;
-    ll int ans;
+    int n,x,y,m,a,b,cnt,num,sum,temp;
+    vector<int> alice(SIZE),bob(SIZE);
+    bool sw;
     open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>n>>m>>k;
-        if(n < k) ans = n;
-        else ans = k;
+        sw = true;
+        cin>>n;
+        for(int i = 0; i < n; i++) cin>>alice[i];
+        for(int i = 0; i < n; i++) cin>>bob[i];
 
-        if(m < k) ans *= m;
-        else ans *= k;
+        for(int i = 0, j = n - 1; i < n; i++, j--){
+            if(alice[i] != bob[i] && alice[i] != bob[j]) sw = false;
+            if(alice[j] != bob[j] && alice[j] != bob[i]) sw = false;
+        }
+        if(sw) cout<<"Bob\n";
+        else cout<<"Alice\n";
 
-        cout<<ans<<"\n";
     }
     return 0;
 }
