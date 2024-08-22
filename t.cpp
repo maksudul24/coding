@@ -34,6 +34,8 @@ int main()
         temp = m / k;
         if(temp == 0) ans *= m;
         else ans *= (temp * k);
+
+        if(k == 1) ans = 1;
         cout<<ans<<"\n";
     }
     return 0;
