@@ -6,13 +6,12 @@
 #define dbug cout<<"Line: ",__LINE__<<"\n";
 #define INF 2147483647
 #define M_INF -2147483648
-#define SIZE 300010
+#define SIZE 200010
 #define MOD 1000000009
 #define ll long long
 //PRINT_VARIABLE_NAME //use cout<<"\n";
 #define PVN(variable) std::cout << #variable << " = " << variable <<"\n"
 using namespace std;
-
 
 int main()
 {
@@ -21,45 +20,75 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,l,icl,k,ick;
-    vector<int> alice(SIZE),bob(SIZE);
+    int n,px,py,qx,qy;
     bool sw;
+    ll int a,b,c,x,y,z,qa,qb,qc,pa,pb,pc,temp,disPQ,disT;
+    double p,q,temp1,temp2,tempa,tempb; 
+    vector<pair<int,int> > ara; 
     open_file;
     cin>>testCase;
     while(testCase--){
-        sw = true;
         cin>>n;
-        for(int i = 0; i < n; i++) cin>>alice[i];
-        for(int i = 0; i < n; i++) cin>>bob[i];
-        if(alice[0] == bob[0]){
-            k = 0;
-            ick = 1;
+        for(int i = 0; i < n; i++){
+            cin>>px>>py;
+            ara.push_back(make_pair(px,py));
         }
-        else if(alice[0] == bob[n - 1]){
-            k = n - 1;
-            ick = -1;
-        }
-        else sw = false;
+        cin>>px>>py>>qx>>qy;
+        sw = true;
+        //equation of p and q point
+        a = py - qy;
+        b = (px - qx) * -1;
+        c = px * b - py * a;
+        
+        //equation of horizontal line on p point
+        pa = b;
+        pb = -1 * a;
+        pc = px * pa + py * pb;
 
-        if(alice[n - 1] == bob[0]){
-            l = 0;
-            icl = 1;
-        }
-        else if(alice[n - 1] == bob[n - 1]){
-            l = n - 1;
-            icl = -1;
-        }
-        else sw = false;
+        // equation of horizontal line on q point
+        qa = b;
+        qb = -1 * a;
+        qc = qx * qa + qy * qb;
+        
+        //distance from p to q
+        disPQ = a * a + b * b;
+      //  disPQ = sqrt(temp * 1.0);
 
-        for(int i = 0, j = n - 1; i < n && sw; i++, j--){
-            if(alice[i] != bob[k]) sw = false;
-            else k += ick;
+        for(int i = 0; i < n && sw; i++){
+            temp = pa * ara[i].first + pb * ara[i].second;
+            if(temp >= pc){
+                temp = qa * ara[i].first + qb * ara[i].second;
+                if(temp >= qc){
+                    x = qx - ara[i].first;
+                    y = qy - ara[i].second;
+                    disT = x * x + y * y;
+                    if(disT >= disPQ) sw = false;
+                }
+                else{
+                    x = b;
+                    y = -1 * a;
+                    z = x * ara[i].first + y * ara[i].second;
 
-            if(alice[j] != bob[l]) sw = false;
-            else l += icl;
+                    p = ((y * c - b * z) * 1.0) / ((a * y - x * b) * 1.0); 
+                    q = ((x * z - x * c) * 1.0) / ((a * y - x * b) * 1.0); 
+
+                    tempa = p - ara[i].first;
+                    tempb = q - ara[i].second;
+                    temp1 = tempa * tempa + tempb * tempb;
+
+                    tempa = p - qa;
+                    tempb = q - qb;
+                    temp2 = tempa * tempa + tempb * tempb;
+
+                    if(temp1 >= temp2) sw = false;
+                    
+                }
+
+            }
         }
-        if(sw) cout<<"Bob\n";
-        else cout<<"Alice\n";
+        if(sw) YES;
+        else NO;
+        ara.clear();
 
     }
     return 0;
