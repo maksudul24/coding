@@ -21,15 +21,19 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,a,b,cnt,num,sum,temp;
+    int n,x,ans;
     string s;
     open_file;
     cin>>testCase;
     while(testCase--){
         cin>>n;
-        cin>>s;
-        if(s[0] != s[n - 1]) YES;
-        else NO;
+        cin>>ans;
+        for(int i = 1; i < n; i++){
+            cin>>x;
+            if(i % 2 != 0) ans = max(ans,x);
+            else ans = min(ans,x);
+        }
+        cout<<ans<<"\n";
     }
     return 0;
 }
