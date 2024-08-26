@@ -22,18 +22,17 @@ int main()
 
     int testCase;
     int n,x,ans;
+    int ara[SIZE];
     string s;
     open_file;
     cin>>testCase;
     while(testCase--){
         cin>>n;
-        cin>>ans;
-        for(int i = 1; i < n; i++){
-            cin>>x;
-            if(i % 2 != 0) ans = max(ans,x);
-            else ans = min(ans,x);
-        }
-        cout<<ans<<"\n";
+        for(int i = 0; i < n; i++) cin>>ara[i];
+        sort(ara,ara + n,greater<int>());
+        x = n / 2;
+        if(n % 2 == 0) x--;
+        cout<<ara[x]<<"\n";
     }
     return 0;
 }
