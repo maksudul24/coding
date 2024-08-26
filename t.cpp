@@ -21,35 +21,30 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,len;
-    int ara[SIZE],num[SIZE];
+    int n,x,cnt;
+    int ara[SIZE];
     string s;
     char ch;
     open_file;
     cin>>testCase;
     while(testCase--){
         memset(ara,0,sizeof(ara));
-        len = 0;
         cin>>n;
         cin.ignore();
         cin>>s;
         for(int i = 0; i < n; i++){
             x = s[i] - 'a';
             ara[x]++;
-            if(ara[x] == 1) num[len++] = x;
         }
-        sort(num,num + len);
-        while(len > 0){
-            for(int i = 0; i < len; i++){
-                    ch = num[i] + 'a';  
+        cnt = 1;
+        while(cnt > 0){
+            cnt = 0;
+            for(int i = 0; i < 26; i++){
+                if(ara[i] > 0){
+                    ch = i + 'a';  
                     cout<<ch;
-                    ara[num[i]]--;
-            }
-            for(int i = 0; i < len; i++){
-                if(ara[num[i]] == 0){
-                    len--;
-                    for(int j = i; j < len; j++) num[j] = num[j + 1];
-                    i--;
+                    ara[i]--;
+                    cnt++;
                 }
             }
 
