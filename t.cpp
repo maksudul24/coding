@@ -20,7 +20,7 @@ int main()
 
     int testCase;
     int n,x,y,m,a,b,value,id,mx,len,total;
-    ll int ans,temp;
+    ll int ans,temp,temp2;
     unordered_map<int,bool> mark;
     open_file;
     cin>>testCase;
@@ -58,11 +58,13 @@ int main()
         }
 
         if(m > total){
-            ans = total * (total + 1);
+            temp2 = total + 1;
+            ans = total * temp2;
             temp = m - total;
             x = total + 1;
             x = 2 * x;
-            temp = (x + (temp - 1)) * temp;
+            temp2 = temp - 1;
+            temp = (x + temp2) * temp;
             ans += temp / 2;
         }
         else ans = total * (m + 1);
