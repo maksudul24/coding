@@ -12,6 +12,8 @@
 //PRINT_VARIABLE_NAME //use cout<<"\n";
 #define PVN(variable) std::cout << #variable << " = " << variable <<"\n"
 using namespace std;
+
+
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -19,57 +21,17 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,a,b,value,id,mx,len,total;
-    ll int ans,temp,temp2;
-    unordered_map<int,bool> mark;
+    int n,x,y,m,ans;
     open_file;
     cin>>testCase;
     while(testCase--){
-        total = 0;
         cin>>n>>m;
-        for(int i = 0; i < n; i++){
-            cin>>len;
-            mx = -1;                
-            for(int j = 0; j < len; j++){
-                cin>>x;
-                if(x < SIZE){
-                    if(mark.find(x) == mark.end()) mark[x] = true;
-                    mx = max(mx,x);
-                }
-            }
-            id = -1;
-            value = -1;
-            for(int j = 0; j <= mx; j++){
-                if(mark.find(j) == mark.end()){
-                    if(id == -1) id = j;
-                    else{
-                        value = j;
-                        break;
-                    }
-                }
-            }
-            if(id == -1){
-                id = mx + 1;
-                value = mx + 2;
-            }
-            else if(value == -1) value = mx + 1;
-            total = max(value,total);
-            mark.clear();
+        ans = m - n + 1;
+        if(ans > 3) cout<<ans/4<<"\n";
+        else{
+            if(n % 2 != 0 && m % 2 != 0 && ans == 3) cout<<"1\n";
+            else cout<<"0\n";
         }
-
-        if(m > total){
-            temp2 = total + 1;
-            ans = total * temp2;
-            temp = m - total;
-            x = total + 1;
-            x = 2 * x;
-            temp2 = temp - 1;
-            temp = (x + temp2) * temp;
-            ans += temp / 2;
-        }
-        else ans = total * (m + 1);
-        cout<<ans<<"\n";
-
     }
     return 0;
 }
