@@ -29,7 +29,7 @@ int main()
         ans = m - n + 1;
         if(ans > 3) cout<<ans/4<<"\n";
         else{
-            if(n % 2 != 0 && m % 2 != 0 && ans == 3) cout<<"1\n";
+            if(n % 2 != 0 && m % 2 != 0 && ans == 3 && n != m) cout<<"1\n";
             else cout<<"0\n";
         }
     }
