@@ -19,18 +19,19 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     //use "\n" for next line
-    //git problem
+
     int testCase;
-    int n,x,y,m,ans;
+    int a,b;
     open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>n>>m;
-        ans = m - n + 1;
-        if(n % 2 != 0 && m % 2 != 0 && n != m && ans % 2 != 0) ans++;
-        ans /= 4;
-        cout<<ans<<"\n";
-        
+        cin>>a>>b;
+        if(a % 2 == 0){
+            if(a) YES;
+            else if(b % 2 == 0) YES;
+            else NO;
+        }
+        else NO;
     }
     return 0;
 }
