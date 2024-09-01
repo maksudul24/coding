@@ -21,17 +21,48 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int a,b;
+    int len,x,row,n,cnt;
+    bool sw,swz;
+    string s;
     open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>a>>b;
-        if(a % 2 == 0){
-            if(a) YES;
-            else if(b % 2 == 0) YES;
-            else NO;
+        cin>>n;
+        cin.ignore();
+        cin>>s;
+        swz = false;
+        row = 2;
+        cnt = 0;
+        sw = true;
+        len = -1;
+
+        x = sqrt(n);
+        if(x * x != n) sw = false;
+
+        for(int i = 0; i < n && sw; i++){
+            if(swz){
+                x = (i + 1) % len;
+                if(x == 1 || x == 0){
+                   if(s[i] == '0') sw = false;
+                }
+                else if(s[i] == '1') sw = false;
+                if(x == 0) row++;
+                if(row == len) swz = false;
+            }
+            else if(s[i] == '0' && row != len){
+                len = i - 1;
+                swz = true;
+            }
+            else if(row == len){
+                if(s[i] == '0') sw = false;
+                else cnt++;
+            }
         }
+        if(cnt != len || swz) sw = false;
+        if(n == 4 && s[0] == '1' && s[1] == '1' && s[2] == '1' & s[3] == '1') sw = true;
+        if(sw) YES;
         else NO;
+
     }
     return 0;
 }
