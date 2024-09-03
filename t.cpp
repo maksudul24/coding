@@ -21,22 +21,13 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,m,ans;
-    ll int temp;
-    double x;
+    int n,x,y,m,a,b,cnt,num,sum,temp;
+    bool sw;
     open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>n>>m;
-        temp = m - n;
-        temp *= 8;
-        temp++;
-        x = sqrt(temp);
-        x = (x - 1) / 2.0;
-        ans = x;
-        ans++;
-        if(n == m) ans = 1;
-        cout<<ans<<"\n";
+        cin>>a>>b;
+        cout<<b - a<<"\n";
     }
     return 0;
 }
