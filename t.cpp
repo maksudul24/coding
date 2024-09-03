@@ -6,7 +6,7 @@
 #define dbug cout<<"Line: ",__LINE__<<"\n";
 #define INF 2147483647
 #define M_INF -2147483648
-#define SIZE 510
+#define SIZE 200010
 #define MOD 1000000009
 #define ll long long
 //PRINT_VARIABLE_NAME //use cout<<"\n";
@@ -21,26 +21,17 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n;
-    string s;
-    int ara[SIZE];
-//    open_file;
+    int n,x,m,d,ans;
+    open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>n;
-        cin.ignore();
-        for(int i = 0; i < n; i++){
-            cin>>s;
-            for(int j = 0; j < 4; j++){
-                if(s[j] == '#') ara[i] = j + 1;
-            }
-        }
-        for(int i = n - 1; i >= 0; i--){
-            cout<<ara[i];
-            if(i) cout<<" ";
-        }
-        cout<<"\n";
-
+        cin>>n>>m>>d;
+        x = max(n,m);
+        ans = x / d;
+        if(x % d != 0) ans++;
+        ans *= 2;
+        if(n > m) ans--;
+        cout<<ans<<"\n";
     }
     return 0;
 }
