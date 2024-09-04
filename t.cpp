@@ -43,8 +43,7 @@ int main()
         else ans = 0;
         ans += num;
         ans *= 2;
-        if(sw) ans--;
-        if(ans == 1 && n && m) ans++;
+        if(sw && temp / d > 1) ans--; 
         cout<<ans<<"\n";
     }
     return 0;
