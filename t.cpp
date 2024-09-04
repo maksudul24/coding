@@ -21,13 +21,15 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,m,d,num,temp,ans;
+    int n,x,m,d,num,temp,ans,y;
     bool sw;
     open_file;
     cin>>testCase;
     while(testCase--){
         sw = false;
         cin>>n>>m>>d;
+        x = n;
+        y = m;
         if(n > m){
             sw = true;
             swap(n,m);
@@ -46,6 +48,11 @@ int main()
         if(sw){
             if(m % d == 0 && m / d == 1 && n);               
             else ans--;
+        }
+        if(d > x && d > y){
+            if(y) ans = 2;
+            else if(x && !y) ans = 1;
+            else ans = 0;
         }
         cout<<ans<<"\n";
     }
