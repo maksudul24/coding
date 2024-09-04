@@ -44,6 +44,7 @@ int main()
         ans += num;
         ans *= 2;
         if(sw) ans--;
+        if(ans == 1 && n && m) ans++;
         cout<<ans<<"\n";
     }
     return 0;
