@@ -40,15 +40,13 @@ int main()
         temp = m - temp;
         if(temp > 0){
             ans = temp / d;
+            if(sw && ans == 0) sw = false;
             if(temp % d != 0) ans++;
         }
         else ans = 0;
         ans += num;
         ans *= 2;
-        if(sw){
-            if(m % d == 0 && m / d == 1 && n);               
-            else ans--;
-        }
+        if(sw) ans--;
         if(d > x && d > y){
             if(y) ans = 2;
             else if(x && !y) ans = 1;
