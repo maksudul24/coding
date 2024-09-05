@@ -23,7 +23,7 @@ int main()
     int testCase;
     int n,x,m,d,num,temp,ans,y;
     bool sw;
-    open_file;
+//    open_file;
     cin>>testCase;
     while(testCase--){
         sw = false;
@@ -43,7 +43,10 @@ int main()
             if(sw && ans == 0) sw = false;
             if(temp % d != 0) ans++;
         }
-        else ans = 0;
+        else{
+            ans = 0;
+            if(sw) sw = false;
+        }
         ans += num;
         ans *= 2;
         if(sw) ans--;
