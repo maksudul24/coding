@@ -21,41 +21,19 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,m,d,num,temp,ans,y;
-    bool sw;
-//    open_file;
+    int n;
+    string s = "aeiou",ans;
+    open_file;
     cin>>testCase;
     while(testCase--){
-        sw = false;
-        cin>>n>>m>>d;
-        x = n;
-        y = m;
-        if(n > m){
-            sw = true;
-            swap(n,m);
-        }
-        num = n / d;
-        if(n % d != 0) num++;
-        temp = num * d;
-        temp = m - temp;
-        if(temp > 0){
-            ans = temp / d;
-            if(sw && ans == 0) sw = false;
-            if(temp % d != 0) ans++;
-        }
-        else{
-            ans = 0;
-            if(sw) sw = false;
-        }
-        ans += num;
-        ans *= 2;
-        if(sw) ans--;
-        if(d > x && d > y){
-            if(y) ans = 2;
-            else if(x && !y) ans = 1;
-            else ans = 0;
+        cin>>n;
+        ans = "";
+        for(int i = 0, j = 0; i < n; i++,j++){
+            if(j % 5 == 0) j = 0;
+            ans.push_back(s[j]);
         }
         cout<<ans<<"\n";
+
     }
     return 0;
 }
