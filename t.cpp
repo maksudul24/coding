@@ -21,17 +21,17 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n;
+    int n,len;
     string s = "aeiou",ans;
     open_file;
     cin>>testCase;
     while(testCase--){
         cin>>n;
         ans = "";
-        for(int i = 0, j = 0; i < n; i++,j++){
-            if(j % 5 == 0) j = 0;
-            ans.push_back(s[j]);
-        }
+        len = n - 5;
+        for(int i = 0; i < len; i++) ans.push_back('a');
+        if(len > 0) n = n - len;
+        for(int i = 0; i < n; i++) ans.push_back(s[i]);
         cout<<ans<<"\n";
 
     }
