@@ -55,3 +55,17 @@ set number relativenumber
 set nu rnu
 set belloff=all
 autocmd VimLeave * let &t_EI="\e[2 q" | normal i
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'webdevel/tabulous'
+
+call plug#end()
+
+nnoremap <C-n> :NERDTreeToggle<CR>
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+" Set this to enable mouse click in tab
+let tabulousCloseStr = ''
