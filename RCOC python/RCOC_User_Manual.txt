@@ -10,7 +10,7 @@ search it on internet.]
 Operations:
 type this on windows command line and press enter:
 
-python cp.py
+python cr.py
 [This will copy from your clipboard and set that the file name for next
 commands]
 
@@ -26,5 +26,5 @@ python rn.py
 [This will run the exicutable "a" with input from input.txt and show them in
 terminal]
 
-python cr.py 
+python cp.py 
 [This will copy clipboard to input.txt]
