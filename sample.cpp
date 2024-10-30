@@ -6,9 +6,10 @@
 #define dbug cout<<"Line: ",__LINE__<<"\n";
 #define INF 2147483647
 #define M_INF -2147483648
-#define SIZE 120
+#define SIZE 200010
 #define MOD 1000000009
-//PRINT_VARIABLE_NAME //use cout<<"\n";
+#define ll long long
+//PRINT_VARIABLE_NAME
 #define PVN(variable) std::cout << #variable << " = " << variable <<"\n"
 using namespace std;
 
@@ -20,20 +21,14 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m,ans,mx;
-    int ara[SIZE];
+    int k,x,y;
+    bool sw;
    //open_file;
     cin>>testCase;
     while(testCase--){
-        memset(ara,0,sizeof(ara));
-        mx = -1;
-        cin>>n;
-        for(int i = 0; i < n; i++){
-            cin>>x;
-            ara[x]++;
-            mx = max(mx,ara[x]);
-        }
-        cout<<n - mx<<"\n";
+        cin>>x>>y>>k;
+        cout<<"0 0 0 "<<k<<"\n";
+        cout<<"0 0 "<<k<<" 0\n";
     }
     return 0;
 }
