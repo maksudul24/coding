@@ -67,5 +67,15 @@ call plug#end()
 nnoremap <C-n> :NERDTreeToggle<CR>
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+
 " Set this to enable mouse click in tab
 let tabulousCloseStr = ''
+
+"set automatic cursor line
+"set cursorline
+"autocmd InsertEnter * set nocursorline
+"autocmd InsertLeave * set cursorline
+"blinking bar options
+"let &t_SI = "\<Esc>[5 q"
+let &t_SR = "\<Esc>[3 q"
+"let &t_EI = "\<Esc>[1 q"
