@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
-#define open_file freopen("in.txt","r",stdin)
-#define output_file freopen("out.txt","w",stdout)
+#define open_file freopen("input.txt","r",stdin)
+#define output_file freopen("output.txt","w",stdout)
 #define YES cout<<"YES\n"
 #define NO cout<<"NO\n"
 #define dbug cout<<"Line: ",__LINE__<<"\n";
@@ -8,9 +8,9 @@
 #define M_INF -2147483648
 #define SIZE 200010
 #define MOD 1000000009
+//PRINT_VARIABLE_NAME
+#define PVN(variable) std::cout << #variable << " = " << variable << std::endl
 #define ll long long
-//PRINT_VARIABLE_NAME //use cout<<"\n";
-#define PVN(variable) std::cout << #variable << " = " << variable <<"\n"
 using namespace std;
 
 
@@ -21,18 +21,31 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,len;
-    string s = "aeiou",ans;
-    open_file;
+    int n,x,y,m;
+
+  //  open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>n;
-        ans = "";
-        len = n - 5;
-        for(int i = 0; i < len; i++) ans.push_back('a');
-        if(len > 0) n = n - len;
-        for(int i = 0; i < n; i++) ans.push_back(s[i]);
-        cout<<ans<<"\n";
+        cin>>n>>m;
+        cout<<"1";
+        if(n == 2){
+            if(m == 9) cout<<" 3 9";
+            else if(m == 6) cout<<" 3";
+            else if(m % 2) cout<<" "<<m;
+        }
+        else if(n < 6){
+            cout<<" 3";
+            if(m == 5) cout<<" 5";
+            cout<<" 7";
+            if(m % 3 == 0) cout<<" 9";
+        }
+        else{
+            cout<<" 3";
+            if(m == 5) cout<<" 5";
+            cout<<" 7 9";
+        }
+        cout<<"\n";
+
 
     }
     return 0;
