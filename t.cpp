@@ -31,7 +31,7 @@ int main()
         if(n == 2){
             if(m == 9) cout<<" 3 9";
             else if(m == 6) cout<<" 3";
-            else if(m % 2) cout<<" "<<m;
+            else if(m % 2 && m != 1) cout<<" "<<m;
         }
         else if(n < 6){
             cout<<" 3";
