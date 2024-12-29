@@ -13,6 +13,10 @@
 #define ll long long
 using namespace std;
 
+struct typ{
+    int x,y;
+};
+
 
 int main()
 {
@@ -21,32 +25,44 @@ int main()
     //use "\n" for next line
 
     int testCase;
-    int n,x,y,m;
+    int n,x,y,m,mx,mn,sum;
+    vector<typ> ara(SIZE);
 
-  //  open_file;
+ //   open_file;
     cin>>testCase;
     while(testCase--){
-        cin>>n>>m;
-        cout<<"1";
-        if(n == 2){
-            if(m == 9) cout<<" 3 9";
-            else if(m == 6) cout<<" 3";
-            else if(m % 2 && m != 1) cout<<" "<<m;
+        cin>>n;
+        vector<int> mark((n * 2) + 10);
+        vector<int> cnt((n * 2) + 10);
+        mn = INT_MAX;
+        mx = INT_MIN;
+        for(int i = 0; i < n; i++){
+            cin>>ara[i].x>>ara[i].y;
+            if(ara[i].x == ara[i].y){
+                mark[ara[i].x] = 1;
+                cnt[ara[i].x]++;
+            }
+            mn = min(ara[i].x,mn);
+            mx = max(ara[i].y,mx);
         }
-        else if(n < 6){
-            cout<<" 3";
-            if(m == 5) cout<<" 5";
-            cout<<" 7";
-            if(m % 3 == 0) cout<<" 9";
+        sum = 0;
+        for(int i = mn; i <= mx; i++){
+            sum += mark[i];
+            mark[i] = sum;
         }
-        else{
-            cout<<" 3";
-            if(m == 5) cout<<" 5";
-            cout<<" 7 9";
+        for(int i = 0; i < n; i++){
+            if(ara[i].x == ara[i].y){
+                if(cnt[ara[i].x] > 1) cout<<"0";
+                else cout<<"1";
+            }
+            else{
+                x = ara[i].y - ara[i].x + 1;
+                y = mark[ara[i].y] - mark[ara[i].x];
+                if(x == y) cout<<"0";
+                else cout<<"1";
+            }
         }
         cout<<"\n";
-
-
     }
     return 0;
 }
