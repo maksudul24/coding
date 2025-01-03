@@ -87,4 +87,4 @@ autocmd VimLeave * let &t_EI="\e[2 q" | normal i
 
 "automatic closing breakets
 
-inoremap {<CR> {<CR>}<Esc>ko<tab>
+inoremap {<CR> {<CR>}<Esc>ko
