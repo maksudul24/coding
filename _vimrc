@@ -54,7 +54,7 @@ set expandtab
 set number relativenumber
 set nu rnu
 set belloff=all
-autocmd VimLeave * let &t_EI="\e[2 q" | normal i
+set mouse=n
 
 call plug#begin('~/.vim/plugged')
 
@@ -79,3 +79,12 @@ let tabulousCloseStr = ''
 "let &t_SI = "\<Esc>[5 q"
 let &t_SR = "\<Esc>[3 q"
 "let &t_EI = "\<Esc>[1 q"
+
+set encoding=utf-8
+scriptencoding utf-8
+
+autocmd VimLeave * let &t_EI="\e[2 q" | normal i
+
+"automatic closing breakets
+
+inoremap {<CR> {<CR>}<Esc>ko<tab>
