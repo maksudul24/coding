@@ -1,5 +1,7 @@
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
+set encoding=utf-8
+scriptencoding utf-8
 
 " Use the internal diff if available.
 " Otherwise use the special 'diffexpr' for Windows.
@@ -61,6 +63,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'webdevel/tabulous'
+Plug 'chrisbra/vim-commentary'
 
 call plug#end()
 
@@ -80,8 +83,6 @@ let tabulousCloseStr = ''
 let &t_SR = "\<Esc>[3 q"
 "let &t_EI = "\<Esc>[1 q"
 
-set encoding=utf-8
-scriptencoding utf-8
 
 autocmd VimLeave * let &t_EI="\e[2 q" | normal i
 
