@@ -64,6 +64,7 @@ Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'webdevel/tabulous'
 Plug 'chrisbra/vim-commentary'
+Plug '907th/vim-auto-save'
 
 call plug#end()
 
@@ -89,3 +90,8 @@ autocmd VimLeave * let &t_EI="\e[2 q" | normal i
 "automatic closing breakets
 
 inoremap {<CR> {<CR>}<Esc>ko
+
+"autsave
+let g:auto_save = 1
+let g:auto_save_silent = 1
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
