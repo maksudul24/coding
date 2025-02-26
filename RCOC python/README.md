@@ -10,27 +10,26 @@ search it on internet.]
 Operations:
 type this on windows command line and press enter:
 
-python cr.py
-[This will copy from your clipboard and set that the file name for next
-commands]
+python cr.py </br>
+[This will copy from your clipboard and set that the file name for the code file]
 
-python op.py
+python op.py </br>
 [This will create a new file with the template or open a file existing code in
 vim] 
 
-python cmp.py
+python cmp.py </br>
 [This will compile the code and create an exicutable file named "a", you can
 type a and run the code or use python rn.py to run the with input displayed]
 
-python rn.py 
+python rn.py  </br>
 [This will run the exicutable "a" with input from input.txt and show them in
 terminal]
-
-python cp.py 
+ 
+python cp.py </br>
 [This will copy clipboard to input.txt]
 
-python mcr.py
-[This command will copy a manual text input as file name]
+python mcr.py </br>
+[This command takes input from the user set it as file name]
 
-python pst.py
+python pst.py </br>
 [This will copy the code to clipboard with // added infrot of 'open_file' line]
