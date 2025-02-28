@@ -80,9 +80,114 @@ let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 
 "terminal window in the right with a fixed size 20
-set termwinsize=0x20
+"set termwinsize=0x40
 "autocmd VimEnter * botright vertical terminal  
 nnoremap <M-t> :botright vertical terminal<CR>
 
 "nnoremap <M-t> :if bufexists("term://*") | bd! term://* | else | botright vertical terminal | endif<CR>
 autocmd BufEnter * if winnr('$') == 1 && &buftype == 'terminal' | quit! | endif
+
+
+
+
+"this will run file in terminal with input showing if compiled correctly using
+"python.rn use Alt + e
+
+
+
+function! RunCodeWithInput()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    execute 'botright vert terminal'
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+
+  call term_sendkeys(buf, "python .py\<CR>")
+endfunction
+
+nnoremap <M-e> :call RunCodeWithInput()<CR>
+
+"this will just run the code binary, use Alt + r
+
+
+function! RunCode()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    execute 'botright vert terminal'
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+
+  call term_sendkeys(buf, "a\<CR>")
+endfunction
+
+" Map <M-r> to call the function
+nnoremap <M-r> :call RunCode()<CR>
+
+
+
+
+
+"this function will compile file using python.cmp, use Alt + b
+
+
+function! CompileCode()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    execute 'botright vert terminal'
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+  call term_sendkeys(buf, "python cmp.py\<CR>")
+endfunction
+
+nnoremap <M-b> :call CompileCode()<CR>
+
+
+
+
+"this will copy code to the clipboard with '//' added in the 'open_file', use
+"Alt + p
+
+function! PasteCode()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    execute 'botright vert terminal'
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+  call term_sendkeys(buf, "python pst.py\<CR>")
+endfunction
+
+nnoremap <M-p> :call PasteCode()<CR>
+
+
+
+
+"this will paste input.txt from clipboard use Alt + c
+
+
+function! CopyInput()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    execute 'botright vert terminal'
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+  call term_sendkeys(buf, "python cp.py\<CR>")
+endfunction
+
+nnoremap <M-c> :call CopyInput()<CR>
+
+
