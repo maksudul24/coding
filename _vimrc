@@ -80,14 +80,19 @@ let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 
 "terminal window in the right with a fixed size 20
-"set termwinsize=0x40
+"set termwinsize=0x20
 "autocmd VimEnter * botright vertical terminal  
-nnoremap <M-t> :botright vertical terminal<CR>
 
-"nnoremap <M-t> :if bufexists("term://*") | bd! term://* | else | botright vertical terminal | endif<CR>
+
+function! OpenTerminalRight()
+    botright vsplit
+    vertical resize 40
+    terminal++curwin
+endfunction
+
+nnoremap <M-t> :call OpenTerminalRight()<CR>
+
 autocmd BufEnter * if winnr('$') == 1 && &buftype == 'terminal' | quit! | endif
-
-
 
 
 "this will run file in terminal with input showing if compiled correctly using
@@ -99,13 +104,13 @@ function! RunCodeWithInput()
   let term_buffers = term_list()
 
   if empty(term_buffers)
-    execute 'botright vert terminal'
+    call OpenTerminalRight()
     let buf = bufnr('%')
   else
     let buf = term_buffers[0]
   endif
 
-  call term_sendkeys(buf, "python .py\<CR>")
+  call term_sendkeys(buf, "python rn.py\<CR>")
 endfunction
 
 nnoremap <M-e> :call RunCodeWithInput()<CR>
@@ -117,7 +122,7 @@ function! RunCode()
   let term_buffers = term_list()
 
   if empty(term_buffers)
-    execute 'botright vert terminal'
+    call OpenTerminalRight()
     let buf = bufnr('%')
   else
     let buf = term_buffers[0]
@@ -140,7 +145,7 @@ function! CompileCode()
   let term_buffers = term_list()
 
   if empty(term_buffers)
-    execute 'botright vert terminal'
+    call OpenTerminalRight()
     let buf = bufnr('%')
   else
     let buf = term_buffers[0]
@@ -160,7 +165,7 @@ function! PasteCode()
   let term_buffers = term_list()
 
   if empty(term_buffers)
-    execute 'botright vert terminal'
+    call OpenTerminalRight()
     let buf = bufnr('%')
   else
     let buf = term_buffers[0]
@@ -180,7 +185,7 @@ function! CopyInput()
   let term_buffers = term_list()
 
   if empty(term_buffers)
-    execute 'botright vert terminal'
+    call OpenTerminalRight()
     let buf = bufnr('%')
   else
     let buf = term_buffers[0]
