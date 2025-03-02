@@ -95,3 +95,114 @@ inoremap {<CR> {<CR>}<Esc>ko
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
+
+function! OpenTerminalRight()
+    botright vsplit
+    vertical resize 40
+    terminal++curwin
+endfunction
+
+nnoremap <M-t> :call OpenTerminalRight()<CR>
+
+autocmd BufEnter * if winnr('$') == 1 && &buftype == 'terminal' | quit! | endif
+
+
+"this will run file in terminal with input showing if compiled correctly using
+"python.rn use Alt + e
+
+
+
+function! RunCodeWithInput()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    call OpenTerminalRight()
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+
+  call term_sendkeys(buf, "python rn.py\<CR>")
+endfunction
+
+nnoremap <M-e> :call RunCodeWithInput()<CR>
+
+"this will just run the code binary, use Alt + r
+
+
+function! RunCode()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    call OpenTerminalRight()
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+
+  call term_sendkeys(buf, "a\<CR>")
+endfunction
+
+" Map <M-r> to call the function
+nnoremap <M-r> :call RunCode()<CR>
+
+
+
+
+
+"this function will compile file using python.cmp, use Alt + b
+
+
+function! CompileCode()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    call OpenTerminalRight()
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+  call term_sendkeys(buf, "python cmp.py\<CR>")
+endfunction
+
+nnoremap <M-b> :call CompileCode()<CR>
+
+
+
+
+"this will copy code to the clipboard with '//' added in the 'open_file', use
+"Alt + p
+
+function! PasteCode()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    call OpenTerminalRight()
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+  call term_sendkeys(buf, "python pst.py\<CR>")
+endfunction
+
+nnoremap <M-p> :call PasteCode()<CR>
+
+
+
+
+"this will paste input.txt from clipboard use Alt + c
+
+
+function! CopyInput()
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    call OpenTerminalRight()
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+  call term_sendkeys(buf, "python cp.py\<CR>")
+endfunction
+
+nnoremap <M-c> :call CopyInput()<CR>
