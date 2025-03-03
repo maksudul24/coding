@@ -33,3 +33,13 @@ python mcr.py </br>
 
 python pst.py </br>
 [This will copy the code to clipboard with // added infrot of 'open_file' line]
+
+
+*Vim integration
+
+1.'Alt + n' will copy the filename from clipboard (python cr.py)
+2.'Alt + b' will compile the code and genrate 'a'(python cmp.py)
+3.'Alt + r' will run a
+4.'Alt + e' will run the code with input(python rn.py)
+5.'Alt + i' will copy input from clipboard(python cp.py)
+6.'Alt + p' will paste the code with added //open_file (python pst.py)

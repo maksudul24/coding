@@ -1,0 +1,117 @@
+function! GetTerminalBuffer() 
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+    call OpenTerminalRight()
+    let buf = bufnr('%')
+  else
+    let buf = term_buffers[0]
+  endif
+  return buf
+
+endfunction
+
+function! OpenTerminalRight()
+    botright vsplit
+    vertical resize 40
+    terminal++curwin
+endfunction
+
+nnoremap <M-t> :call OpenTerminalRight()<CR>
+
+autocmd BufEnter * if winnr('$') == 1 && &buftype == 'terminal' | quit! | endif
+
+"python rn.py
+function! RunCodeWithInput()
+    let buf = GetTerminalBuffer()
+    call term_sendkeys(buf, "python rn.py\<CR>")
+endfunction
+
+
+
+"a
+function! RunCode()
+    let buf = GetTerminalBuffer()
+    call term_sendkeys(buf, "a\<CR>")
+endfunction
+
+
+
+
+"python cmp.py
+function! CompileCode()
+    let buf = GetTerminalBuffer()
+    call term_sendkeys(buf, "python cmp.py\<CR>")
+endfunction
+
+
+
+
+
+"python pst.py
+function! PasteCode()
+    let buf = GetTerminalBuffer()
+    call term_sendkeys(buf, "python pst.py\<CR>")
+endfunction
+
+
+
+"python cp.py
+function! CopyInput()
+    let buf = GetTerminalBuffer()
+    call term_sendkeys(buf, "python cp.py\<CR>")
+endfunction
+
+
+"python op.py(similer)
+function! OpenCode() 
+    let filename = "currentprogrammename.txt"
+    if filereadable(filename)
+        let buf = GetTerminalBuffer()
+        call term_setkill(buf,"kill")
+        call term_sendkeys(buf, "exit\<CR>")
+        let tabname = readfile(filename)[0]
+        let insturction = "tabnew " . tabname . ".cpp"
+        execute insturction
+        tabprevious
+        tabclose!
+    endif
+endfunction
+
+
+
+
+"python cr.py
+function! CreateName()
+    let buf = GetTerminalBuffer()
+    call term_sendkeys(buf, "python cr.py\<CR>")
+    call term_sendkeys(buf, "python op_vimplug.py\<CR>")
+endfunction
+
+"Instructions
+"Map keys as you like
+
+
+"1.this will run file in terminal with input showing if compiled correctly using
+"python.rn use Alt + e
+nnoremap <M-e> :call RunCodeWithInput()<CR>
+
+"2.this will just run the code binary, use Alt + r
+nnoremap <M-r> :call RunCode()<CR>
+
+"3.this function will compile file using python.cmp, use Alt + b
+nnoremap <M-b> :call CompileCode()<CR>
+
+"4.this will copy code to the clipboard with '//' added in the 'open_file', use
+"Alt + p
+nnoremap <M-p> :call PasteCode()<CR>
+
+"5.this will paste input.txt from clipboard use Alt + i
+nnoremap <M-i> :call CopyInput()<CR>
+
+"6.Open Code with the given filename, use Alt + o
+nnoremap <M-o> :call OpenCode()<CR>
+
+"7.Create new filename by just copying(it sets the file name from clipboard),
+"use Alt + n
+nnoremap <M-n> :call CreateName()<CR>
