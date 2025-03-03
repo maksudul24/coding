@@ -90,7 +90,20 @@ function! OpenTerminalRight()
     terminal++curwin
 endfunction
 
+function! ClearScreen() 
+  let term_buffers = term_list()
+
+  if empty(term_buffers)
+      echo 'Terminal is not Open'
+  else
+    let buf = term_buffers[0]
+  endif
+  call term_sendkeys(buf, "cls\<CR>")
+endfunction
+
 nnoremap <M-t> :call OpenTerminalRight()<CR>
+
+nnoremap <M-m> :call ClearScreen()<CR>
 
 autocmd BufEnter * if winnr('$') == 1 && &buftype == 'terminal' | quit! | endif
 
